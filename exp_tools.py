@@ -190,8 +190,8 @@ def load_mnist():
     return X, Y, Xt, Yt
 
 def load_caserm():
-    os.chdir('/home/alexander/Documents/CSM-Statistics /Semester 3/Center Research')
-    img = envi.open('324620.hdr', '324620.dat')
+
+    img = envi.open('datasets/324620.hdr', 'datasets/324620.dat')
     bands = np.zeros((img.shape[0], img.shape[1], img.shape[2]))
     for j in np.arange(0, img.shape[0]):
         for k in np.arange(0, img.shape[1]):
@@ -262,7 +262,7 @@ def load_caserm():
 
     def data_print():
 
-        folder_name = "/home/alexander/Documents/CSM-Statistics /Semester 3/Center Research/"
+        folder_name = "/datasets/"
 
         file_name = "Mineralogy_" + str(global_number) + ".csv"
 
