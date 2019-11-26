@@ -1,9 +1,5 @@
 # convgp
-Code for running Gaussian processes with convolutional and symmetric structures. The code is currently being cleaned up
-and will be continuously published over the next week or so. Things that you can expect to come:
-- stored trained models,
-- code to replicate the figures in the paper,
-- detailed commands to replicate the exact experiments in the paper.
+A forked version of the convgp github page to use additional datasets
 
 ## Paper
 The accompanying paper can be found on [arXiv](https://arxiv.org/abs/1709.01894).
