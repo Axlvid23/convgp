@@ -1,18 +1,30 @@
-# convgp
-A forked version of the convgp github page to use additional datasets
+# convgp:  Stanford and Geology Datasets
+A forked version of the convgp github page to use additional datasets.  The first dataset is the Stanford NLP dataset that has some success with ConvNets and the other is a research dataset that uses hyperspectral data to approximate mineralogy.  At this time there is a compatibility issue with Tensorflow 1.0, which is required to run both convgp and GPflow with inter-domain support.
 
 ## Paper
 The accompanying paper can be found on [arXiv](https://arxiv.org/abs/1709.01894).
 
-## Setup
+## Setup and Directions
 ### GPflow with inter-domain support
 In order to run the examples here, you need to have a branch of GPflow installed that supports inter-domain inducing
 variables. The branch located [here](https://github.com/markvdw/GPflow-inter-domain) and can be installed following the
 usual GPflow instructions. You can either use your favourite virtualenv to install the branch in, or switch back and
 forth between the main and customised versions of GPflow by running their setup script. 
+### Tensorflow 1.0
+In order to run convgp with GPflow (inter-domain support), you will need to use tensorflow 1.0.
 
-### Datasets
-You will also need to setup the datasets. In `/datasets`, run:
+### Datasets: 
+
+### My contribution:  CASERM and Stanford NLP Dataset
+
+These datasets should be set up to run and begin to iterate using the Convolutional Gaussian Process SVM classification algorithm provided by the forked code from markvdw.
+
+##Caserm:  Research data for geology.  Currently, this dataset will run and obtain a classification accuracy near 60% before crashing while trying to record.
+
+##Stanford NLP:  
+
+
+For the original convgp datasets, you will also need to setup the datasets. In `/datasets`, run:
  ```
  python process_cifar10.py
  python process_rectangles.py
@@ -33,6 +45,11 @@ when using stochastic optimisation, but often problematic when using (variants o
 used only with stochastic optimisation, and `float64` otherwise. This has to be adjusted manually in the `gpflowrc`file.
 
 ### Running experiments
+##Axlvid Experiments:  You can run the following experiments I have added until they generate errors.
+-stanford.py:  Stanford NLP Dataset (rbf, conv, weighted conv kernels)
+-caserm.py: Geology Dataset (rbf, conv, weighted conv kernels)
+
+
 We have the following experiments:
  - `rectangles.py`: Rectangles dataset (rbf, conv, and weighted conv kernels).
  - `mnist01.py`: Zeros vs ones MNIST (rbf, conv, and weighted conv kernels).
@@ -47,6 +64,15 @@ Optimisation traces can be displayed using `display.py`. The results files are p
 ```
 python display.py ./results/fullmnist*
 ```
+#### Stanford (The hyperparameters may require adjustment to achieve maximum accuracy)
+python stanford.py -k rbf -M 100
+python stanford.py -k conv -M 50
+python stanford.py -k wconv -M 50
+
+#### Caserm (The hyperparameters may require adjustment to achieve maximum accuracy)
+python caserm.py -k rbf -M 100
+python caserm.py -k conv -M 50
+python caserm.py -k wconv -M 50
 
 #### Rectangles
 ```
