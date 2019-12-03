@@ -45,9 +45,9 @@ when using stochastic optimisation, but often problematic when using (variants o
 used only with stochastic optimisation, and `float64` otherwise. This has to be adjusted manually in the `gpflowrc`file.
 
 ### Running experiments
-##Axlvid Experiments:  You can run the following experiments I have added until they generate errors.
--stanford.py:  Stanford NLP Dataset (rbf, conv, weighted conv kernels)
--caserm.py: Geology Dataset (rbf, conv, weighted conv kernels)
+## Axlvid Experiments:  You can run the following experiments I have added until they generate errors.
+- `stanford.py`:  Stanford NLP Dataset (rbf, conv, weighted conv kernels)
+- `caserm.py`: Geology Dataset (rbf, conv, weighted conv kernels)`
 
 
 We have the following experiments:
@@ -65,15 +65,17 @@ Optimisation traces can be displayed using `display.py`. The results files are p
 python display.py ./results/fullmnist*
 ```
 #### Stanford (The hyperparameters may require adjustment to achieve maximum accuracy)
+```
 python stanford.py -k rbf -M 100
 python stanford.py -k conv -M 50
 python stanford.py -k wconv -M 50
-
+```
 #### Caserm (The hyperparameters may require adjustment to achieve maximum accuracy)
+```
 python caserm.py -k rbf -M 100
 python caserm.py -k conv -M 50
 python caserm.py -k wconv -M 50
-
+```
 #### Rectangles
 ```
 python rectangles.py -k conv -M 16 --minibatch-size 100 -l 0.01 -n rectangles-paper  # Paper
