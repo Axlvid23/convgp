@@ -43,7 +43,8 @@ def suppress_print():
             sys.stdout = old_stdout
 
 def load_stanford():
-
+#This code is similar from some code that I found on how to use the stanford dataset with a CNN.  This dataset should work nicely 
+#because it is symmetric.  However, there is a tensorflow issue that keeps it from running all the way through.
 
     ST_sentence = namedtuple("Stanford_Sentiment", "id sentence")
     ST_score = namedtuple("Stanford_Sentiment", "id score")
@@ -118,7 +119,7 @@ def load_stanford():
                                       truncating='post')
     x_test_data_padded = pad_sequences(tokenizer.texts_to_sequences(x_test_data), maxlen=max_input_length,
                                        padding='post', truncating='post')
-
+#define and implement categories
     def convert_to_categories(y_data):
         y_categories = []
         for score in y_data:
@@ -143,15 +144,15 @@ def load_stanford():
     # Encode the labels, each must be a vector with dim = num. of possible labels
     le = LabelEncoder()
     le.fit(y_train_data_categ)
-
+#label encoder transformations
     labels_encoded_train = le.transform(y_train_data_categ)
     labels_encoded_dev = le.transform(y_dev_data_categ)
     labels_encoded_test = le.transform(y_test_data_categ)
-
+#change data to categorical type
     categorical_labels_train = to_categorical(labels_encoded_train, num_classes=5)
     categorical_labels_dev = to_categorical(labels_encoded_dev, num_classes=5)
     categorical_labels_test = to_categorical(labels_encoded_test, num_classes=5)
-
+#Print a bunch of stuff for troubleshooting
     print(x_train_data_padded.shape)
     print(categorical_labels_train.shape)
 
@@ -160,7 +161,7 @@ def load_stanford():
 
     print(x_test_data_padded.shape)
     print(categorical_labels_test.shape)
-
+#casting as 64 bit integers to overcome problems
     y = categorical_labels_train.astype('int64')
     yt = categorical_labels_test.astype('int64')
     x = x_train_data_padded
@@ -172,6 +173,7 @@ def load_stanford():
 
 x,y,xt,yt = load_stanford()
 
+#prints classes and shapes for troubleshooting
 print(x.__class__)
 print(y.__class__)
 
@@ -190,7 +192,10 @@ def load_mnist():
     return X, Y, Xt, Yt
 
 def load_caserm():
+#this is all the code required to open and perform machine learning on the hyperspectral data.  It uses the spectral library
+#which is useful for analysis of hyperspectral data
 
+#you can find these datasets attached in 'datasets/'
     img = envi.open('datasets/324620.hdr', 'datasets/324620.dat')
     bands = np.zeros((img.shape[0], img.shape[1], img.shape[2]))
     for j in np.arange(0, img.shape[0]):
@@ -203,6 +208,7 @@ def load_caserm():
     # plt.show()
     # plt.savefig('Example.png')
 
+ #peforming alignment and transposition 
     bands = bands.T
     # global_number = 324320
     global_number = 324620
@@ -447,6 +453,7 @@ def load_caserm():
 
         return (common_final_arr, common_reduced_final_arr)
 
+#if you are somehow still reading, this is the hand-alignment of the hyperspectral data to the mineralogy data
     bands = bands.T
     common_final_arr, common_reduced_final_arr = most_prevalent_element_arr()
     bands_final_arr = bands[65:132, 122:205 + 1, :]
@@ -455,6 +462,7 @@ def load_caserm():
     y = common_reduced_final_arr
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
+    #here I am modifying the labeling to be from 0-2 instead of 2,4,11
     nsamples, nx, ny = X_train.shape
     d2_X_train = X_train.reshape(nsamples * nx, ny)
     d2_y_train = y_train.reshape(4452, 1)
@@ -473,6 +481,7 @@ def load_caserm():
     y = d2_y_train
     yt = d2_y_test
 
+    #centering/normalizing
     Xc = (X - X.mean()) / X.std()
     yc = (y - y.mean()) / y.std()
 
@@ -481,7 +490,7 @@ def load_caserm():
     ytc = (yt)# - yt.mean()) / yt.std()
     return Xc, yc, Xtc, ytc
 
-
+#for science aka the code does not work so i was trying to figure out why.
 #X,y,Xt,yt = load_caserm()
 #print('X shape', X.shape)
 #print('y shape', y.shape)
