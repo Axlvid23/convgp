@@ -1,9 +1,4 @@
-"""
-weighted-mnist.py
-Run the weighted convolutional GP on MNIST, using the standard multi-label classification output. The issue with this
-setup is that *all* digit classifications will share the same weights towards the output. One direction to fix this is
-to allow separate kernels for every output.
-"""
+
 
   # Data matrix X, X doesn't need to bimport argparse
 import itertools
@@ -17,6 +12,7 @@ import exp_tools
 import opt_tools
 import convgp.convkernels as ckern
 
+# Calls the caserm data in the exp_tools.py file.  This follows the general format of that data
 class CasermExperiment(exp_tools.CasermExperiment):
     def __init__(self, name=None, M=100, run_settings=None):
         name = "caserm-%s%i" % (run_settings['kernel'], M) if name is None else name
