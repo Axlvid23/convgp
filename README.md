@@ -46,12 +46,14 @@ when using stochastic optimisation, but often problematic when using (variants o
 used only with stochastic optimisation, and `float64` otherwise. This has to be adjusted manually in the `gpflowrc`file.
 
 ### Running experiments
-## Axlvid Experiments:  You can run the following experiments I have added until they generate errors.
+## Axlvid Experiments:  
+
+You can run the following experiments I have added until they generate errors.
 - `stanford.py`:  Stanford NLP Dataset (rbf, conv, weighted conv kernels)
 - `caserm.py`: Geology Dataset (rbf, conv, weighted conv kernels)`
 
 
-We have the following experiments:
+These experiments were the original authors' contribution and they should work:
  - `rectangles.py`: Rectangles dataset (rbf, conv, and weighted conv kernels).
  - `mnist01.py`: Zeros vs ones MNIST (rbf, conv, and weighted conv kernels).
  - `mnist.py`: Full multiclass MNIST (rbf, conv, and weighted conv kernels).
