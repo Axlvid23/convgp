@@ -23,7 +23,7 @@ These datasets should be set up to run and begin to iterate using the Convolutio
 
 ## Stanford NLP:  
 
-Code to perform NLP preprocessing was obtained from: https://github.com/davidsbatista/ConvNets-for-sentence-classification/blob/master/Stanford-Sentiment-Treebank-%20movie%20reviews%20with%20fine-grained%20labels.ipynb
+Code to perform NLP preprocessing was obtained from: [Convnets for sentence classification](https://github.com/davidsbatista/ConvNets-for-sentence-classification/blob/master/Stanford-Sentiment-Treebank-%20movie%20reviews%20with%20fine-grained%20labels.ipynb)
 
 For the original convgp datasets, you will also need to setup the datasets. In `/datasets`, run:
  ```
