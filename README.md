@@ -19,7 +19,9 @@ In order to run convgp with GPflow (inter-domain support), you will need to use 
 
 These datasets should be set up to run and begin to iterate using the Convolutional Gaussian Process SVM classification algorithm provided by the forked code from markvdw.
 
-## Caserm:  Research data for geology.  Currently, this dataset will run briefly before crashing while trying to record.
+## Caserm:  Research data for geology.  
+
+Currently, this dataset will run briefly before crashing while trying to record.
 
 ## Stanford NLP:  
 
